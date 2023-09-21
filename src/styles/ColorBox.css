@@ -87,7 +87,7 @@
     flex-direction: column;
     font-size: 4rem;
     transform: scale(0.1);
-    opacity: 1;
+    opacity: 0;
     color: white;
 }
 
