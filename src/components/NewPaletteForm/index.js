@@ -137,7 +137,7 @@
 
 import React, { Component } from "react";
 import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
@@ -147,7 +147,9 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-const drawerWidth = 240;
+import { ChromePicker } from "react-color";
+
+const drawerWidth = 400;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -247,6 +249,22 @@ class NewPaletteForm extends Component {
             </IconButton>
           </DrawerHeader>
           <Divider />
+          <Typography variant='h4'>Design Your Palette</Typography>
+          <div>
+            <Button variant='contained' color='secondary'>
+              Clear Palette
+            </Button>
+            <Button variant='contained' color='primary'>
+              Random Color
+            </Button>
+          </div>
+          <ChromePicker
+            color='purple'
+            onChangeComplete={(newColor) => console.log(newColor)}
+          />
+          <Button variant='contained' color='primary'>
+            Add Color
+          </Button>
         </Drawer>
         <Main open={open}>
           <DrawerHeader />
