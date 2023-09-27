@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { withStyles } from "@material-ui/styles";
 import { Button } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
@@ -19,6 +20,9 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  flexDirection: "row",
+  justifyContent: "space-between",
+  height: "64px",
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
@@ -28,6 +32,13 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
+const styles = {
+  root: {
+    display: "flex",
+  },
+  navButtons: {},
+};
 
 class PaletteFormNav extends Component {
   constructor(props) {
@@ -50,10 +61,10 @@ class PaletteFormNav extends Component {
   }
 
   render() {
-    const { open, handleSubmit, handleDrawerOpen } = this.props;
+    const { open, handleSubmit, handleDrawerOpen, classes } = this.props;
     const { newPaletteName } = this.state;
     return (
-      <div>
+      <div className={classes.root}>
         <CssBaseline />
         <AppBar position='fixed' open={open} color='default'>
           <Toolbar>
@@ -66,8 +77,10 @@ class PaletteFormNav extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant='h6' noWrap component='div'>
-              Persistent drawer
+              Create A Palette
             </Typography>
+          </Toolbar>
+          <div className={classes.navButtons}>
             <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
               <TextValidator
                 label='Palette Name'
@@ -86,11 +99,11 @@ class PaletteFormNav extends Component {
                 Go Back
               </Button>
             </Link>
-          </Toolbar>
+          </div>
         </AppBar>
       </div>
     );
   }
 }
 
-export default PaletteFormNav;
+export default withStyles(styles)(PaletteFormNav);

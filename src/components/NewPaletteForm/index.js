@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/styles";
 import { styled } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
@@ -40,6 +41,33 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
+
+const styles = {
+  container: {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    flexShrink: 0,
+    "& .MuiDrawer-paper": {
+      width: drawerWidth,
+      boxSizing: "border-box",
+      display: "flex",
+      alignItems: "center",
+    },
+  },
+  buttons: {
+    width: "100%",
+  },
+  button: {
+    width: "50%",
+  },
+};
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -118,7 +146,7 @@ class NewPaletteForm extends Component {
 
   render() {
     const { open, colors } = this.state;
-    const { maxColors, palettes } = this.props;
+    const { maxColors, palettes, classes } = this.props;
     const paletteIsFull = colors.length >= maxColors;
     return (
       <Box sx={{ display: "flex" }}>
@@ -129,14 +157,7 @@ class NewPaletteForm extends Component {
           handleDrawerOpen={this.handleDrawerOpen}
         />
         <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
+          className={classes.drawerPaper}
           variant='persistent'
           anchor='left'
           open={open}>
@@ -146,27 +167,33 @@ class NewPaletteForm extends Component {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <Typography variant='h4'>Design Your Palette</Typography>
-          <div>
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={this.clearColors}>
-              Clear Palette
-            </Button>
-            <Button
-              variant='contained'
-              color='primary'
-              disabled={paletteIsFull}
-              onClick={this.addRandomColor}>
-              Random Color
-            </Button>
+          <div className={classes.container}>
+            <Typography variant='h4' gutterBottom>
+              Design Your Palette
+            </Typography>
+            <div className={classes.buttons}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={this.clearColors}
+                className={classes.button}>
+                Clear Palette
+              </Button>
+              <Button
+                variant='contained'
+                color='primary'
+                disabled={paletteIsFull}
+                onClick={this.addRandomColor}
+                className={classes.button}>
+                Random Color
+              </Button>
+            </div>
+            <ColorPickerForm
+              paletteIsFull={paletteIsFull}
+              addNewColor={this.handleAddNewColor}
+              colors={colors}
+            />
           </div>
-          <ColorPickerForm
-            paletteIsFull={paletteIsFull}
-            addNewColor={this.handleAddNewColor}
-            colors={colors}
-          />
         </Drawer>
         <Main open={open}>
           <DrawerHeader />
@@ -182,4 +209,4 @@ class NewPaletteForm extends Component {
   }
 }
 
-export default NewPaletteForm;
+export default withStyles(styles)(NewPaletteForm);
