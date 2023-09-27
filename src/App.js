@@ -68,9 +68,6 @@ class App extends Component {
             )}
           />
         </Switch>
-        {/* <div>
-        <Palette palette={generatePalette(seedColors[4])} />
-        </div> */}
       </>
     );
   }
