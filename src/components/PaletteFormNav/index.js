@@ -1,55 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { styled } from "@mui/material/styles";
 import { withStyles } from "@material-ui/styles";
 import {
   Button,
   CssBaseline,
-  AppBar as MuiAppBar,
   Toolbar,
   Typography,
   IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PaletteMetaForm from "../PaletteMetaForm";
-
-const drawerWidth = 400;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  height: "64px",
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const styles = {
-  root: {
-    display: "flex",
-  },
-  navButtons: {
-    marginRight: "1rem",
-    "& a": {
-      textDecoration: "none",
-    },
-  },
-  button: {
-    margin: "0 0.5rem !important",
-  },
-};
+import { AppBar, styles } from "../../styles/PaletteFormNavStyles";
 
 class PaletteFormNav extends Component {
   constructor(props) {
