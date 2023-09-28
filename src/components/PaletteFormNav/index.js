@@ -24,6 +24,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   flexDirection: "row",
   justifyContent: "space-between",
+  alignItems: "center",
   height: "64px",
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -39,13 +40,32 @@ const styles = {
   root: {
     display: "flex",
   },
-  navButtons: {},
+  navButtons: {
+    marginRight: "1rem",
+    "& a": {
+      textDecoration: "none",
+    },
+  },
+  button: {
+    margin: "0 0.5rem !important",
+  },
 };
 
 class PaletteFormNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { formShowing: false };
+    this.showForm = this.showForm.bind(this);
+  }
+
+  showForm() {
+    this.setState({ formShowing: true });
+  }
+
   render() {
     const { open, handleSubmit, handleDrawerOpen, classes, palettes } =
       this.props;
+    const { formShowing } = this.state;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -64,12 +84,26 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navButtons}>
-            <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
             <Link to='/'>
-              <Button variant='contained' color='secondary'>
+              <Button
+                variant='contained'
+                color='secondary'
+                className={classes.button}>
                 Go Back
               </Button>
             </Link>
+            <Button
+              variant='contained'
+              onClick={this.showForm}
+              className={classes.button}>
+              Save Palette
+            </Button>
+            {formShowing && (
+              <PaletteMetaForm
+                palettes={palettes}
+                handleSubmit={handleSubmit}
+              />
+            )}
           </div>
         </AppBar>
       </div>
