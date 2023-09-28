@@ -8,7 +8,7 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import PaletteMetaForm from "../PaletteMetaForm";
 import { AppBar, styles } from "../../styles/PaletteFormNavStyles";
 
@@ -43,7 +43,7 @@ class PaletteFormNav extends Component {
               onClick={handleDrawerOpen}
               edge='start'
               sx={{ mr: 2, ...(open && { display: "none" }) }}>
-              <MenuIcon />
+              <AddToPhotosIcon />
             </IconButton>
             <Typography variant='h6' noWrap component='div'>
               Create A Palette
