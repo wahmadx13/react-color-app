@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import { styled } from "@mui/material/styles";
 import {
   Box,
   Button,
@@ -14,63 +13,7 @@ import { arrayMoveImmutable } from "array-move";
 import DraggableColorList from "../DraggableColorList";
 import PaletteFormNav from "../PaletteFormNav";
 import ColorPickerForm from "../ColorPickerForm";
-
-const drawerWidth = 400;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    height: "calc(100vh - 64px)",
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
-
-const styles = {
-  container: {
-    width: "90%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    flexShrink: 0,
-    "& .MuiDrawer-paper": {
-      width: drawerWidth,
-      boxSizing: "border-box",
-      display: "flex",
-      alignItems: "center",
-    },
-  },
-  buttons: {
-    width: "100%",
-  },
-  button: {
-    width: "50%",
-  },
-};
+import { Main, DrawerHeader, styles } from "../../styles/NewPaletteFormStyles";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -113,13 +56,9 @@ class NewPaletteForm extends Component {
     });
   }
 
-  handleSavePalette(newPaletteName) {
-    const newName = newPaletteName;
-    const newPalette = {
-      paletteName: newName,
-      id: newName.toLowerCase().replace(/ /g, "-"),
-      colors: this.state.colors,
-    };
+  handleSavePalette(newPalette) {
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-");
+    newPalette.colors = this.state.colors;
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
