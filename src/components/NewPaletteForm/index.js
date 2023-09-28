@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
 import { styled } from "@mui/material/styles";
-import { Box, Button } from "@mui/material";
-import Drawer from "@mui/material/Drawer";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
+import {
+  Box,
+  Button,
+  Drawer,
+  Typography,
+  Divider,
+  IconButton,
+} from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { arrayMoveImmutable } from "array-move";
 import DraggableColorList from "../DraggableColorList";
 import PaletteFormNav from "../PaletteFormNav";
-import ColorPickerForm from "../../ColorPickerForm";
+import ColorPickerForm from "../ColorPickerForm";
 
 const drawerWidth = 400;
 
