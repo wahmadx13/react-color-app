@@ -1,13 +1,16 @@
 /* eslint-disable import/no-anonymous-default-export */
 import sizes from "./mediaQueries";
+import bg from "./svg/bg.svg";
 
 export default {
   root: {
-    backgroundColor: "blue",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    /* background by SVGBackgrounds.com */
+    backgroundImage: `url(${bg})`,
+    overflow: "scroll",
   },
   container: {
     width: "50%",
@@ -32,6 +35,9 @@ export default {
       color: "white",
       fontWeight: 600,
     },
+    "& h1": {
+      fontSize: "2rem",
+    },
   },
   palettes: {
     boxSizing: "border-box",
@@ -44,7 +50,7 @@ export default {
     },
     [sizes.down("xs")]: {
       gridTemplateColumns: "repeat(1, 100%)",
-      gridGap: "1rem",
+      gridGap: "1.4rem",
     },
   },
 };
