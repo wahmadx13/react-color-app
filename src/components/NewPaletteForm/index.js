@@ -14,6 +14,7 @@ import DraggableColorList from "../DraggableColorList";
 import PaletteFormNav from "../PaletteFormNav";
 import ColorPickerForm from "../ColorPickerForm";
 import { Main, DrawerHeader, styles } from "../../styles/NewPaletteFormStyles";
+import seedColors from "../../utils/seedColors";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -23,7 +24,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);

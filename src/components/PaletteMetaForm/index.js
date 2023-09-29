@@ -77,6 +77,7 @@ class PaletteMetaForm extends Component {
                 value={newPaletteName}
                 onChange={this.handleChange}
                 fullWidth
+                variant='filled'
                 margin='normal'
                 validators={["required", "isPaletteNameUnique"]}
                 errorMessages={["Enter Palette Name", "Name already used"]}
