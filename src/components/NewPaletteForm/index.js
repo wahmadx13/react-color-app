@@ -14,6 +14,7 @@ import DraggableColorList from "../DraggableColorList";
 import PaletteFormNav from "../PaletteFormNav";
 import ColorPickerForm from "../ColorPickerForm";
 import { Main, DrawerHeader, styles } from "../../styles/NewPaletteFormStyles";
+import seedColors from "../../utils/seedColors";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -23,7 +24,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
     };
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -81,8 +82,17 @@ class NewPaletteForm extends Component {
 
   addRandomColor() {
     const allColors = this.props.palettes.map((p) => p.colors).flat();
-    const rand = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors[rand];
+    let rand;
+    let randomColor;
+    let isDuplicate = true;
+    while (isDuplicate) {
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+      isDuplicate = this.state.colors.some(
+        // eslint-disable-next-line no-loop-func
+        (color) => color.name === randomColor.name
+      );
+    }
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
 
@@ -144,6 +154,7 @@ class NewPaletteForm extends Component {
             deleteColor={this.deleteColor}
             axis='xy'
             onSortEnd={this.onSortEnd}
+            distance={20}
           />
         </Main>
       </Box>
