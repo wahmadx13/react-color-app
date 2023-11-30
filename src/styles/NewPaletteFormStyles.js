@@ -30,6 +30,33 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+export const NewPaletteFormStyled = styled("div")({
+  "& .container": {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  "& .drawer-paper": {
+    width: `${DRAWER_WIDTH}px`,
+    flexShrink: 0,
+    "& .MuiDrawer-paper": {
+      width: DRAWER_WIDTH,
+      boxSizing: "border-box",
+      display: "flex",
+      alignItems: "center",
+    },
+  },
+  "& .buttons": {
+    width: "100%",
+  },
+  "& .button": {
+    width: "50%",
+  },
+});
+
 export const styles = {
   container: {
     width: "90%",

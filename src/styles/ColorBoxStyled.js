@@ -1,6 +1,6 @@
 import chroma from "chroma-js";
 import sizes from "./mediaQueries";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 export const ColorBoxStyled = styled("div")(
   ({ showingFullPalette, background }) => ({

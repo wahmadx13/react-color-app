@@ -1,6 +1,6 @@
 import sizes from "./mediaQueries";
 import chroma from "chroma-js";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 export const DraggableColorBoxStyled = styled("div")(({ background }) => ({
   width: "20%",
