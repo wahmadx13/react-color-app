@@ -1,27 +1,25 @@
-/* eslint-disable import/no-anonymous-default-export */
+import { styled } from "@mui/material/styles";
 import sizes from "./mediaQueries";
 import bg from "./svg/bg.svg";
 
-export default {
+export const PaletteListStyled = styled("div")({
   "@global": {
     ".fade-exit": {
       opacity: "1",
     },
     ".fade-exit-active": {
       opacity: "0",
-      transition: "opacity 500ms ease-out",
+      transition: "opacity 5000ms ease-out",
     },
   },
-  root: {
-    height: "100vh",
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    /* background by SVGBackgrounds.com */
-    backgroundImage: `url(${bg})`,
-    overflow: "scroll",
-  },
-  container: {
+  height: "100vh",
+  display: "flex",
+  alignItems: "flex-start",
+  justifyContent: "center",
+  /* background by SVGBackgrounds.com */
+  backgroundImage: `url(${bg})`,
+  overflow: "scroll",
+  "& .container": {
     width: "50%",
     display: "flex",
     alignItems: "flex-start",
@@ -34,7 +32,7 @@ export default {
       width: "75%",
     },
   },
-  nav: {
+  "& .nav": {
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
@@ -48,7 +46,7 @@ export default {
       fontSize: "2rem",
     },
   },
-  palettes: {
+  "& .palettes": {
     boxSizing: "border-box",
     width: "100%",
     display: "grid",
@@ -62,4 +60,4 @@ export default {
       gridGap: "1.4rem",
     },
   },
-};
+});
