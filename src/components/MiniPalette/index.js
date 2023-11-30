@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
-import { withStyles } from "@material-ui/styles";
-import styles from "../../styles/MiniPaletteStyles";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { MiniPaletteStyled } from "../../styles/MiniPaletteStyles";
 
 class MiniPalette extends PureComponent {
   constructor(props) {
@@ -19,28 +18,25 @@ class MiniPalette extends PureComponent {
   }
 
   render() {
-    const { classes, paletteName, emoji, colors } = this.props;
-    const miniColorBoxes = colors.map((color) => (
-      <div
-        className={classes.miniColor}
-        style={{ backgroundColor: color.color }}
-        key={color.name}
-      />
-    ));
+    const { paletteName, emoji, colors } = this.props;
     return (
-      <div className={classes.root} onClick={this.handleClick}>
-        <DeleteIcon
-          className={classes.deleteIcon}
-          onClick={this.deletePalette}
-        />
-
-        <div className={classes.colors}>{miniColorBoxes}</div>
-        <h5 className={classes.title}>
-          {paletteName} <span className={classes.emoji}>{emoji}</span>
+      <MiniPaletteStyled onClick={this.handleClick}>
+        <DeleteIcon className='delete-icon' onClick={this.deletePalette} />
+        <div className='colors'>
+          {colors.map((color) => (
+            <div
+              className='mini-color'
+              style={{ backgroundColor: color.color }}
+              key={color.name}
+            />
+          ))}
+        </div>
+        <h5 className='title'>
+          {paletteName} <span className='emoji'>{emoji}</span>
         </h5>
-      </div>
+      </MiniPaletteStyled>
     );
   }
 }
 
-export default withStyles(styles)(MiniPalette);
+export default MiniPalette;
