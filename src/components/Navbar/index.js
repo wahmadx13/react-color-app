@@ -8,11 +8,10 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { withStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import styles from "../../styles/NavbarStyles";
+import { NavbarStyled } from "../../styles/NavbarStyled";
 
 class Navbar extends Component {
   constructor(props) {
@@ -32,17 +31,17 @@ class Navbar extends Component {
   }
 
   render() {
-    const { level, changeLevel, showingAllColors, classes } = this.props;
+    const { level, changeLevel, showingAllColors } = this.props;
     const { format, open } = this.state;
     return (
-      <header className={classes.Navbar}>
-        <div className={classes.logo}>
+      <NavbarStyled>
+        <div className='logo'>
           <Link to='/'>Reactcolorpicker</Link>
         </div>
         {showingAllColors && (
           <div>
             <span>Level: {level}</span>
-            <div className={classes.slider}>
+            <div className='slider'>
               <Slider
                 defaultValue={level}
                 min={100}
@@ -53,7 +52,7 @@ class Navbar extends Component {
             </div>
           </div>
         )}
-        <div className={classes.selectContainer}>
+        <div className='select-container'>
           <FormControl variant='standard' sx={{ m: 1, minWidth: 220 }}>
             <InputLabel id='select-component-label'>
               Select Color Format
@@ -92,9 +91,9 @@ class Navbar extends Component {
             </IconButton>,
           ]}
         />
-      </header>
+      </NavbarStyled>
     );
   }
 }
 
-export default withStyles(styles)(Navbar);
+export default Navbar;
