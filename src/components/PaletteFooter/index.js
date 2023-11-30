@@ -1,5 +1,5 @@
 import React from "react";
-import { PaletteFooterStyled } from "../../styles/PaletteFooterStyles";
+import { PaletteFooterStyled } from "../../styles/PaletteFooterStyled";
 
 function PaletteFooter(props) {
   const { paletteName, emoji } = props;

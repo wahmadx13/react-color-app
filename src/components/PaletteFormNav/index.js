@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withStyles } from "@material-ui/styles";
 import {
   Button,
   CssBaseline,
@@ -10,7 +9,10 @@ import {
 } from "@mui/material";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import PaletteMetaForm from "../PaletteMetaForm";
-import { AppBar, styles } from "../../styles/PaletteFormNavStyles";
+import {
+  AppBar,
+  PaletteFormNavStyled,
+} from "../../styles/PaletteFormNavStyled";
 
 class PaletteFormNav extends Component {
   constructor(props) {
@@ -29,11 +31,10 @@ class PaletteFormNav extends Component {
   }
 
   render() {
-    const { open, handleSubmit, handleDrawerOpen, classes, palettes } =
-      this.props;
+    const { open, handleSubmit, handleDrawerOpen, palettes } = this.props;
     const { formShowing } = this.state;
     return (
-      <div className={classes.root}>
+      <PaletteFormNavStyled>
         <CssBaseline />
         <AppBar position='fixed' open={open} color='default'>
           <Toolbar>
@@ -49,19 +50,16 @@ class PaletteFormNav extends Component {
               Create A Palette
             </Typography>
           </Toolbar>
-          <div className={classes.navButtons}>
+          <div className='nav-buttons'>
             <Link to='/'>
-              <Button
-                variant='contained'
-                color='secondary'
-                className={classes.button}>
+              <Button variant='contained' color='secondary' className='button'>
                 Go Back
               </Button>
             </Link>
             <Button
               variant='contained'
               onClick={this.showForm}
-              className={classes.button}>
+              className='button'>
               Save Palette
             </Button>
             {formShowing && (
@@ -73,9 +71,9 @@ class PaletteFormNav extends Component {
             )}
           </div>
         </AppBar>
-      </div>
+      </PaletteFormNavStyled>
     );
   }
 }
 
-export default withStyles(styles)(PaletteFormNav);
+export default PaletteFormNav;
