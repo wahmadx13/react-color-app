@@ -16,7 +16,7 @@ import {
   Main,
   DrawerHeader,
   NewPaletteFormStyled,
-} from "../../styles/NewPaletteFormStyles";
+} from "../../styles/NewPaletteFormStyled";
 import seedColors from "../../utils/seedColors";
 
 class NewPaletteForm extends Component {

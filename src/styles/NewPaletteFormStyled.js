@@ -56,30 +56,3 @@ export const NewPaletteFormStyled = styled("div")({
     width: "50%",
   },
 });
-
-export const styles = {
-  container: {
-    width: "90%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  drawerPaper: {
-    width: `${DRAWER_WIDTH}px`,
-    flexShrink: 0,
-    "& .MuiDrawer-paper": {
-      width: DRAWER_WIDTH,
-      boxSizing: "border-box",
-      display: "flex",
-      alignItems: "center",
-    },
-  },
-  buttons: {
-    width: "100%",
-  },
-  button: {
-    width: "50%",
-  },
-};
