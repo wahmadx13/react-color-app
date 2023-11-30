@@ -30,8 +30,8 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export const styles = {
-  container: {
+export const NewPaletteFormStyled = styled("div")({
+  "& .container": {
     width: "90%",
     height: "100%",
     display: "flex",
@@ -39,7 +39,7 @@ export const styles = {
     justifyContent: "center",
     alignItems: "center",
   },
-  drawerPaper: {
+  "& .drawer-paper": {
     width: `${DRAWER_WIDTH}px`,
     flexShrink: 0,
     "& .MuiDrawer-paper": {
@@ -49,10 +49,10 @@ export const styles = {
       alignItems: "center",
     },
   },
-  buttons: {
+  "& .buttons": {
     width: "100%",
   },
-  button: {
+  "& .button": {
     width: "50%",
   },
-};
+});

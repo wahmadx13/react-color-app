@@ -1,16 +1,15 @@
-/* eslint-disable import/no-anonymous-default-export */
+import { styled } from "@mui/material/styles";
 import sizes from "./mediaQueries";
-export default {
-  Palette: {
-    height: "100vh",
-    overflowX: "hidden",
-    display: "flex",
-    flexDirection: "column",
-  },
-  colors: {
+
+export const PaletteStyled = styled("div")({
+  height: "100vh",
+  overflowX: "hidden",
+  display: "flex",
+  flexDirection: "column",
+  "& .colors": {
     height: "87%",
   },
-  goBack: {
+  "& .go-back": {
     width: "20%",
     height: "50%",
     margin: "0 auto",
@@ -52,4 +51,4 @@ export default {
       height: "10%",
     },
   },
-};
+});
